@@ -1,4 +1,4 @@
-﻿namespace DataProcessor.Entities;
+﻿namespace DataProcessor.Models;
 
 public class CombinedOvenStatus : BaseCombinedStatus
 {

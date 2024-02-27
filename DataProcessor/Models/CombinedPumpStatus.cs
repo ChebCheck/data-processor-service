@@ -1,4 +1,4 @@
-﻿namespace DataProcessor.Entities;
+﻿namespace DataProcessor.Models;
 
 public class CombinedPumpStatus : BaseCombinedStatus
 {
@@ -46,15 +46,15 @@ public class CombinedPumpStatus : BaseCombinedStatus
 
     public CombinedPumpStatus(
         BaseCombinedStatus baseStatus,
-        string mode, 
-        int flow, 
-        int percentB, 
-        int percentC, 
-        int percentD, 
-        int minimumPressureLimit, 
-        double maximumPressureLimit, 
-        int pressure, 
-        bool pumpOn, 
+        string mode,
+        int flow,
+        int percentB,
+        int percentC,
+        int percentD,
+        int minimumPressureLimit,
+        double maximumPressureLimit,
+        int pressure,
+        bool pumpOn,
         int channel) : base(baseStatus)
     {
         Mode = mode;

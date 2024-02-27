@@ -1,8 +1,8 @@
 ﻿using System.Text.Json;
 
-namespace DataProcessor.Entities;
+namespace DataProcessor.Models;
 
-public  class InstrumentStatus
+public class InstrumentStatus
 {
     public string PackageID { get; set; }
     public List<DeviceStatus> DeviceStatuses { get; set; } = new List<DeviceStatus>();
