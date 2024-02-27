@@ -13,10 +13,6 @@ services.AddServices("Host = localhost; Port = 5432; Database = moduleStatus; Us
 
 var serviceProvider = services.BuildServiceProvider();
 
-
-Console.WriteLine(" [*] Waiting for messages.");
-InstrumentStatus instrumentStatus = new InstrumentStatus();
-
 var factory = new ConnectionFactory() { HostName = "localhost" };
 using var connection = factory.CreateConnection();
 using var channel = connection.CreateModel();
@@ -25,15 +21,15 @@ channel.QueueDeclare("InstrumentStatus", false, false, false, null);
 var consumer = new EventingBasicConsumer(channel);
 consumer.Received += (model, ea) =>
 {
-    var body = ea.Body.ToArray();
-    var message = Encoding.UTF8.GetString(body);
-    var recivedObject = JsonSerializer.Deserialize<InstrumentStatus>(message);
-    var repository = serviceProvider.GetRequiredService<IRepository<ModuleStatusEntity>>();
+    var recivedObject = JsonSerializer.Deserialize<InstrumentStatus>(
+        Encoding.UTF8.GetString(ea.Body.ToArray()));
 
     if (recivedObject == null)
         throw new Exception();
 
-    foreach(var item in recivedObject.DeviceStatuses)
+    var repository = serviceProvider.GetRequiredService<IRepository<ModuleStatusEntity>>();
+
+    foreach (var item in recivedObject.DeviceStatuses)
     {
         repository.Create(new ModuleStatusEntity()
         {
@@ -43,6 +39,8 @@ consumer.Received += (model, ea) =>
     }
 };
 channel.BasicConsume("InstrumentStatus", true, consumer);
+
+Console.WriteLine(" [*] Waiting for messages.");
 
 Console.WriteLine(" Press [enter] to exit.");
 Console.ReadLine();
