@@ -7,11 +7,4 @@ public class DeviceStatus
     public BaseCombinedStatus RapidControlStatus { get; set; }
 
     public DeviceStatus() { }
-
-    public DeviceStatus(string moduleCategoryID, int indexWithinRole, BaseCombinedStatus rapidControlStatus)
-    {
-        ModuleCategoryID = moduleCategoryID;
-        IndexWithinRole = indexWithinRole;
-        RapidControlStatus = rapidControlStatus;
-    }
 }
