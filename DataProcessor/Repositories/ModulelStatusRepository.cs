@@ -46,11 +46,6 @@ public class ModulelStatusRepository : IRepository<ModuleStatusEntity>
         return await _set.FirstOrDefaultAsync(e => e.ModuleCategoryID == id);
     }
 
-    public async Task<IEnumerable<ModuleStatusEntity>> GetAll()
-    {
-        return await _set.ToListAsync();
-    }
-
     public async Task<ModuleStatusEntity> Update(ModuleStatusEntity entity)
     {
         var ent = await Get(entity.ModuleCategoryID);
