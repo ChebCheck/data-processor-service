@@ -14,8 +14,7 @@ public static class ServiceRgister
     {
         services.AddDbContext<ApplicationContext>((options) =>
         {
-            //options.UseSqlite(appSettings["connectionString"]);
-            options.UseNpgsql(appSettings["connectionString"]);
+            options.UseSqlite(appSettings["connectionString"]);
         });
         services.AddScoped<IRepository<ModuleStatusEntity>, ModulelStatusRepository>();
         services.AddScoped<IMessageBroker, MessageReciverService>(

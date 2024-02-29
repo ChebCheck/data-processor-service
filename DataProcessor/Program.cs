@@ -4,7 +4,7 @@ using DataProcessor.DI;
 using DataProcessor.Interfaces;
 
 ServiceCollection services = new ServiceCollection();
-services.AddServices(ConfigurationManager.AppSettings); //"Data Source=moduleStatus.db"
+services.AddServices(ConfigurationManager.AppSettings);
 
 var provider = services.BuildServiceProvider();
 
@@ -14,3 +14,5 @@ messageBroker.Recive();
 Console.WriteLine(" Waiting for messages.");
 Console.WriteLine(" Press [enter] to exit.");
 Console.ReadLine();
+
+messageBroker.Dispose();

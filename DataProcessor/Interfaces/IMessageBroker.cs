@@ -1,6 +1,6 @@
 ﻿namespace DataProcessor.Interfaces;
 
-public interface IMessageBroker
+public interface IMessageBroker : IDisposable
 {
     void Recive();
 }

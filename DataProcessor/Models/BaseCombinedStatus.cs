@@ -2,7 +2,7 @@
 
 public class BaseCombinedStatus
 {
-    public string ModuleState { get; set; }
+    public string? ModuleState { get; set; }
     public bool IsBusy { get; set; }
     public bool IsReady { get; set; }
     public bool IsError { get; set; }

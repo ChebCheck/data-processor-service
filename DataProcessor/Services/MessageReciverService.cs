@@ -1,7 +1,6 @@
 ﻿using DataProcessor.Entities;
 using DataProcessor.Interfaces;
 using DataProcessor.Models;
-using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
@@ -9,7 +8,7 @@ using System.Text.Json;
 
 namespace DataProcessor.Services;
 
-public class MessageReciverService : IMessageBroker, IDisposable
+public class MessageReciverService : IMessageBroker
 {
     private readonly IRepository<ModuleStatusEntity> _repository;
     private readonly IModel channel;
